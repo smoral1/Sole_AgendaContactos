@@ -4,19 +4,22 @@ import java.util.ArrayList;
 
 import modelo.javabean.Contacto;
 
-
+/**
+ * Clase que implementa el interface {@link GestionAgenda},
+ * además se introducen algunos datos de contactos
+ */
 public class AgendaContactos implements GestionAgenda {
 	private String nombreAgenda;
 	private ArrayList<Contacto> contactos;
-	
-	
+
+
 	public AgendaContactos() {
 		
 		contactos = new ArrayList<>();
 		cargardatos();
 		
 	}
-	
+
 	private void cargardatos() {
 		contactos.add(new Contacto("Sara", "Molinero", "677964223", "sara@ifp.es", "Intel"));
 		contactos.add(new Contacto("Mario", "García", "698964283", "mario@gmail.com", "Intel"));
@@ -25,6 +28,12 @@ public class AgendaContactos implements GestionAgenda {
 
 	}
 
+
+	/**
+	 * Añade un nuevo contacto.
+	 * @param contacto El contacto que se quiere añadir.
+	 * @return true si se ha añadido correctamente, false si no se ha añadido porque ya existe uno con ese nombre.
+	 */
 	@Override
 	public boolean altaContacto(Contacto contacto) {
 		if(!contactos.contains(contacto)) {
@@ -35,11 +44,23 @@ public class AgendaContactos implements GestionAgenda {
 		
 	}
 
+
+	/**
+	 * Elimina un contacto existente.
+	 * @param contacto El contacto que se quiere eliminar.
+	 * @return true si se ha eliminado correctamente, false si no se ha eliminado porque el contacto no existe.
+	 */
 	@Override
 	public boolean eliminarContacto(Contacto contacto) {
 		return contactos.remove(contacto);
 	}
 
+
+	/**
+	 * Busca un contacto existente por su nombre.
+	 * @param nombre El nombre del contacto que se quiere buscar.
+	 * @return el contacto, o null si no se encuentra ningún contacto son ese nombre.
+	 */
 	@Override
 	public Contacto buscarUno(String nombre) {
 		Contacto contacto = new Contacto();
@@ -50,8 +71,13 @@ public class AgendaContactos implements GestionAgenda {
 		else
 			return contactos.get(pos);
 	}
-	
 
+
+	/**
+	 *Busca un contacto existente por su teléfono.
+	 * @param telefono El teléfono del contacto que se quiere buscar.
+	 * @return el contacto, o null si no se encuentra ningún contacto son ese teléfono.
+	 */
 	@Override
 	public Contacto buscarTelefono(String telefono) {
 
@@ -64,6 +90,12 @@ public class AgendaContactos implements GestionAgenda {
 
 	}
 
+
+	/**
+	 *Busca un contacto existente por su email.
+	 * @param email El email del contacto que se quiere buscar.
+	 * @return el contacto, o null si no se encuentra ningún contacto son ese email.
+	 */
 	@Override
 	public Contacto buscarEmail(String email) {
 		
@@ -76,7 +108,12 @@ public class AgendaContactos implements GestionAgenda {
 	
 	}
 
-	
+
+	/**
+	 *Busca un contacto existente por los tres primeros caracteres del nombre.
+	 * @param nombre Los tres primeros caracteres del nombre de los contactos que se quieren buscar.
+	 * @return una lista de contactos cuyos nombres empiezan con los tres primeros caracteres del nombre.
+	 */
 	@Override
 	public ArrayList<Contacto> buscarContactosPorTresPrimeros(String nombre) {
 		
@@ -92,8 +129,13 @@ public class AgendaContactos implements GestionAgenda {
 		
 		
 	}
-	
 
+
+	/**
+	 *Cambia los datos de un contacto existente, excepto el nombre.
+	 * @param contacto El contacto con los nuevos datos.
+	 * @return true si los datos se cambian correctamente, false si no se ha cambiado porque el contacto no existe.
+	 */
 	@Override
 	public boolean cambiarDatos(Contacto contacto) {
 		int pos = contactos.indexOf(contacto);
@@ -105,6 +147,12 @@ public class AgendaContactos implements GestionAgenda {
 		}
 	}
 
+
+	/**
+	 *Busca todos los contactos que trabajan para una empresa específica.
+	 * @param empresa El nombre de la empresa.
+	 * @return una lista con todos los contactos de la empresa específica.
+	 */
 	@Override
 	public ArrayList<Contacto> contactosPorEmpresa(String empresa) {
 		ArrayList<Contacto> cont = new ArrayList<>();
