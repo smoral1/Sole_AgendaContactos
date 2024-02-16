@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import modelo.javabean.Contacto;
 
 /**
- * Interface que define las operaciones que se pueden realizar en {@link AgendaContactos}
+ * Interface que define las operaciones que se pueden realizar en AgendaContactos
  */
 public interface GestionAgenda {
 

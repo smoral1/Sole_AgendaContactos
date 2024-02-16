@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import modelo.javabean.Contacto;
 
 /**
- * Clase que implementa el interface {@link GestionAgenda},
+ * Clase que implementa el interface GestionAgenda
  * además se introducen algunos datos de contactos
  */
 public class AgendaContactos implements GestionAgenda {
